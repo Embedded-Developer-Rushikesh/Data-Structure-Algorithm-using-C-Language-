@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct ListNode {
+    int val;
+    struct ListNode *next;
+};
+
+// Function to reverse the linked list
+struct ListNode* reverseList(struct ListNode* head) {
+    struct ListNode* curr = head;
+    struct ListNode* next = NULL;
+    struct ListNode* prev = NULL;
+    
+    while (curr != NULL) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    
+    return prev;
+}
+
+struct ListNode* newNode(int val) {
+    struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+    node->val = val;
+    node->next = NULL;
+    return node;
+}
+
+void printList(struct ListNode* head) {
+    struct ListNode* temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->val);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    struct ListNode* head = newNode(1);
+    head->next = newNode(2);
+    head->next->next = newNode(3);
+    head->next->next->next = newNode(4);
+    head->next->next->next->next = newNode(5);
+    
+    printf("Original list: ");
+    printList(head);
+    
+    head = reverseList(head);
+    
+    printf("Reversed list: ");
+    printList(head);
+    struct ListNode* temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+    return 0;
+}
