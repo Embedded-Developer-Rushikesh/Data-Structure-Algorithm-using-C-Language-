@@ -1,0 +1,1 @@
+Solved C programming problems from LeetCode, Coding Ninjas, and GeeksforGeeks focusing on recursive binary search, array operations, and string manipulation. This repo helps strengthen algorithmic skills and core C programming concepts through practical, well-explained solutions from top coding platforms.
